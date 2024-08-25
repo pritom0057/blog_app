@@ -1,0 +1,48 @@
+<div class="container mt-5">
+  <!-- Display error message if exists -->
+  <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+
+  <div class="card">
+    <div class="card-header">
+      <h2>Blog Posts</h2>
+      <a routerLink="/create" class="btn btn-primary mb-3">Create New Post</a>
+    </div>
+    <div class="card-body">
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th>Title</th>
+          <th>Author</th>
+          <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let post of posts">
+          <td>{{ post.title }}</td>
+          <td>{{ post.author || 'N/A' }}</td>
+          <td>
+            <button class="btn btn-primary btn-sm" [routerLink]="['/edit', post.id]">Edit</button>
+            <!-- Add a check to ensure post.id is defined before calling confirmDelete -->
+            <button *ngIf="post.id !== undefined" class="btn btn-danger btn-sm ml-2" (click)="confirmDelete(post.id)">Delete</button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+
+      <!-- Pagination Controls -->
+      <nav *ngIf="totalPages > 1" aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
+          <li class="page-item" [class.disabled]="currentPage === 1">
+            <a class="page-link" (click)="onPageChange(currentPage - 1)">Previous</a>
+          </li>
+          <li class="page-item" *ngFor="let page of [].constructor(totalPages); let i = index" [class.active]="i + 1 === currentPage">
+            <a class="page-link" (click)="onPageChange(i + 1)">{{ i + 1 }}</a>
+          </li>
+          <li class="page-item" [class.disabled]="currentPage === totalPages">
+            <a class="page-link" (click)="onPageChange(currentPage + 1)">Next</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>

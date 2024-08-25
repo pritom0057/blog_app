@@ -1,0 +1,13 @@
+<div class="app-container">
+  <div *ngIf="globalErrorMessage" class="alert alert-danger mt-3" role="alert">
+    {{ globalErrorMessage }}
+  </div>
+
+  <main>
+    <router-outlet></router-outlet>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 Blog Client Application</p>
+  </footer>
+</div>
