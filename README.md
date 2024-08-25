@@ -21,6 +21,7 @@ This is a full-stack blog application. It consists of a backend server built wit
 1. **Navigate to the backend directory**:
    ```bash
    cd blog-backend
+   npm i
    ```
 
 2. **Run the backend using Docker Compose**:
@@ -34,6 +35,7 @@ This is a full-stack blog application. It consists of a backend server built wit
 1. **Navigate to the frontend directory**:
    ```bash
    cd blog-client
+   npm i
    ```
 
 2. **Run the frontend using Docker Compose**:
